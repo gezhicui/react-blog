@@ -1,0 +1,39 @@
+.author-div {
+  text-align: center;
+  padding: 1rem;
+}
+.author-name {
+  color: #1e90ff;
+  font-size: 1.3rem;
+  font-family: fantasy;
+}
+.author-div div {
+  margin-bottom: 1rem;
+}
+.author-introduction {
+  font-size: 0.8rem;
+  color: #999;
+}
+.account {
+  background-color: #999;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+.comm-box {
+  background-color: #fff;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+  border-bottom: 1px solid #eee;
+}
+.friend-url {
+  text-decoration-line: underline;
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+}
+.friend-url li {
+  margin: 5px;
+}
