@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import { Link, withRouter } from 'react-router-dom' //引入withRouter
 import '../static/style/components/header.css'
 import { Row, Col, Menu, Drawer } from 'antd'
-import { HomeOutlined, FieldTimeOutlined, FolderOpenOutlined, MenuOutlined } from '@ant-design/icons';
+import { HomeOutlined, FieldTimeOutlined, FolderOpenOutlined, MenuOutlined, SearchOutlined } from '@ant-design/icons';
+import SearchContent from '../comopnents/Search'
+
 const Header = (props) => {
   const [visible, setVisible] = useState(false);
+  const [searchVisible, setSearchVisible] = useState(false) // 抽屉加载
+
   const showDrawer = () => {
     setVisible(true);
   };
@@ -13,8 +17,20 @@ const Header = (props) => {
   };
   const handleMwnu = (item) => {
     console.log(item)
-    props.history.push(item.key)
-    onClose()
+    if (item.key === "/search") {
+      handleOnopen()
+      console.log('111')
+    } else {
+      console.log('222')
+      props.history.push(item.key)
+      onClose()
+    }
+  }
+  const handleOnClose = () => {
+    setSearchVisible(false)
+  }
+  const handleOnopen = () => {
+    setSearchVisible(true)
   }
   return (
     <div className="header">
@@ -25,20 +41,20 @@ const Header = (props) => {
         </Col>
 
         <Col className="memu-div" xs={0} sm={0} md={10} lg={10} xl={10} offset={3}>
-          <Menu mode="horizontal"
+          <Menu mode="horizontal" onClick={handleMwnu}
           >
-            <Menu.Item key="home">
-              <HomeOutlined />
-              <Link to='/'>首页</Link>
+            <Menu.Item key="/">
+              <HomeOutlined />首页
+            </Menu.Item >
+            <Menu.Item key="/classify">
+              <FolderOpenOutlined />分类
             </Menu.Item>
-            <Menu.Item key="classify">
-              <FolderOpenOutlined />
-              <Link to='/classify'>分类</Link>
+            <Menu.Item key="/time">
+              <FieldTimeOutlined />时间线
             </Menu.Item>
-            <Menu.Item key="time">
-              <FieldTimeOutlined />
-              <Link to='/time'>时间线</Link>
-            </Menu.Item>
+            <Menu.Item key="/search" >
+              <SearchOutlined /> 站内搜索
+          </Menu.Item>
           </Menu>
         </Col>
         <div className="menu_image">
@@ -66,8 +82,12 @@ const Header = (props) => {
           <Menu.Item key="/time" icon={<FieldTimeOutlined />}>
             时间线
           </Menu.Item>
+          <Menu.Item key="/search" icon={<SearchOutlined />}>
+            站内搜索
+          </Menu.Item>
         </Menu>
       </Drawer>
+      <SearchContent value={searchVisible} onClose={handleOnClose} />
 
     </div>
   )

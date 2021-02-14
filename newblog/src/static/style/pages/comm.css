@@ -1,17 +1,20 @@
+/*  */
 body {
   background-color: #f6f6f6 !important;
-  /* 解决滚动条带来的屏幕抖动 */
-  overflow-y: scroll;
-  overflow-x: hidden;
+}
+.ant-row {
+  overflow: hidden;
 }
 .comm-main {
   padding-top: 3.7rem;
+  min-height: 100vh;
 }
 .comm-right {
   background-color: #fff;
   padding: 0.3rem;
   border-radius: 0.3rem;
   border-bottom: 1px solid #eee;
+  height: 100%;
 }
 .comm-left {
   margin-right: 0.5rem;
@@ -43,6 +46,7 @@ body {
 .list-icon {
   padding: 0.5rem 0;
   color: #aaa;
+  text-align: center;
 }
 .list-icon span {
   margin: 0.2rem;

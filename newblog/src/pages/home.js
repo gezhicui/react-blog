@@ -7,11 +7,9 @@ import 'markdown-navbar/dist/navbar.css';
 import marked from 'marked'
 import hljs from "highlight.js";
 import '../static/style/pages/home.css'
-
 import servicePath from '../config/apiUrl'
 import Author from '../comopnents/Author'
-
-
+import SearchContent from '../comopnents/Search'
 import 'animate.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 const Home = (props) => {
@@ -19,6 +17,7 @@ const Home = (props) => {
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [total, setTotel] = useState(0)
+  const [visible, setVisible] = useState() // 抽屉加载
   const renderer = new marked.Renderer();
 
   marked.setOptions({
@@ -52,12 +51,15 @@ const Home = (props) => {
     }
     getPageData()
   }, [currentPage])
+  const handleOnClose = () => {
+    setVisible(false)
+  }
   const readMore = (item) => {
     props.history.push('/detail/' + item.id)
   }
   const paginationChange = (page) => {
     setCurrentPage(page)
-    document.body.scrollTop = 0
+    document.documentElement.scrollTop = 0
   }
   return (
     <div>
@@ -93,7 +95,6 @@ const Home = (props) => {
               transitionName="animated"
             >
               <div key="amache" className="animate__animated animate__fadeInRight comm-right">
-                <Button>站内搜索</Button>
                 <Breadcrumb className="bread-crumb">
                   <Breadcrumb.Item><a href="/">首页</a></Breadcrumb.Item>
                   <Breadcrumb.Item>最新日志</Breadcrumb.Item>
@@ -127,20 +128,21 @@ const Home = (props) => {
                     </List.Item>
                   )}
                 />
+                <div className='pagination'>
+                  <Pagination
+                    current={currentPage}
+                    responsive={true}
+                    onChange={paginationChange}
+                    showSizeChanger={false}
+                    pageSize={5}
+                    total={total} />
+                </div>
               </div>
-              <div className='pagination'>
-                <Pagination
-                  current={currentPage}
-                  responsive={true}
-                  onChange={paginationChange}
-                  showSizeChanger={false}
-                  pageSize={5}
-                  total={total} />
-              </div>
+
             </ReactCSSTransitionGroup>
           </Col>
         </Row>
-
+        <SearchContent value={visible} onClose={handleOnClose} />
       </Spin>
     </div>
   )
