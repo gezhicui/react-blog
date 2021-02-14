@@ -17,6 +17,7 @@ class HomeController extends Controller {
       "FROM_UNIXTIME(article.addTime,'%Y-%m-%d') as addTime," +
       'article.view_count as view_count ,' +
       'article.status as status ,' +
+      'article.article_content as content ,' +
       'type.typeName as typeName ' +
       // eslint-disable-next-line no-useless-concat
       'FROM article LEFT JOIN type ON article.type_id = type.Id ' +
