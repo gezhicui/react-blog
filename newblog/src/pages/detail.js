@@ -53,7 +53,7 @@ const Detail = (props) => {
     addViewCount()
   }
   useEffect(() => {
-
+    document.documentElement.scrollTop = 0
     setLoading(true)
     async function getData() {
       let id = props.match.params.id

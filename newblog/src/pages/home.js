@@ -34,7 +34,6 @@ const Home = (props) => {
     }
   });
   useEffect(() => {
-
     async function getPageData() {
       setLoading(true)
       await axios({

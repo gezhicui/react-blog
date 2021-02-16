@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import { Avatar, Divider, Tooltip } from 'antd'
 import '../static/style/components/author.css'
 import { GithubOutlined, QqOutlined, WechatOutlined } from '@ant-design/icons';
@@ -5,7 +6,7 @@ const Author = () => {
 
   return (
     <div className="author-div comm-box">
-      <div> <Avatar size={100} src="https://gitee.com/yang_yu_xiang/BlogImages/raw/master/img/psb.jpg" /></div>
+      <div> <Avatar size={100} src="https://gitee.com/yang_yu_xiang/BlogImages/raw/master/img/author.jpg" /></div>
       <div className="author-name">
         杨雨翔
       </div>
@@ -41,6 +42,18 @@ const Author = () => {
           target="_blank"
           rel="noopener noreferer"
         >阿呆的小鸡仔</a>
+        </li>
+        <li> <a
+          href="http://www.shezhiwei.top/"
+          target="_blank"
+          rel="noopener noreferer"
+        >佘智伟的博客</a>
+        </li>
+        <li> <a
+          href="https://cloudhao.top/#/"
+          target="_blank"
+          rel="noopener noreferer"
+        >陈昀昊的小屋</a>
         </li>
       </ul>
     </div>
