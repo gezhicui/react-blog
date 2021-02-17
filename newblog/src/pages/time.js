@@ -17,7 +17,7 @@ const Home = (props) => {
     async function getProjectList() {
       setLoading(true)
       await axios({
-        url: servicePath.getArticleList,
+        url: servicePath.getArticleTimeList,
       }).then((res) => {
         setMylist(res.data.data)
         setLoading(false)

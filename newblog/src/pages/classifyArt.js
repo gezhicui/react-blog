@@ -32,6 +32,7 @@ const Home = (props) => {
     }
   });
   useEffect(() => {
+    document.documentElement.scrollTop = 0
     let typeId = props.match.params.id
     async function getData() {
       setLoading(true)

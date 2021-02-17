@@ -27,6 +27,23 @@ class HomeController extends Controller {
 
     this.ctx.body = { data: results };
   }
+
+  // 获取时间线列表
+  async getArticleTimeList() {
+    const sql =
+      'SELECT article.id as id,' +
+      'article.title as title,' +
+      "FROM_UNIXTIME(article.addTime,'%Y-%m-%d') as addTime," +
+      'article.status as status ' +
+      // eslint-disable-next-line no-useless-concat
+      'FROM article LEFT JOIN type ON article.type_id = type.Id ' +
+      'ORDER BY status desc,article.addTime desc';
+
+    const results = await this.app.mysql.query(sql);
+
+    this.ctx.body = { data: results };
+  }
+
   async getPagingArticleList() {
     const pageNum = this.ctx.query.pageNum - 1;
     const sql =

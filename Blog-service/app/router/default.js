@@ -6,6 +6,8 @@ module.exports = app => {
   router.get('/default/getArticleList', controller.default.home.getArticleList);
   // 获取分页文章列表
   router.get('/default/getPagingArticleList', controller.default.home.getPagingArticleList);
+  // 获取时间线列表
+  router.get('/default/getArticleTimeList', controller.default.home.getArticleTimeList);
   // 根据id获取文章详情
   router.get('/default/getArticleById/:id', controller.default.home.getArticleById);
   // 获取分类列表

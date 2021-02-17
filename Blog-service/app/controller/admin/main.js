@@ -25,11 +25,12 @@ class MainController extends Controller {
       this.ctx.body = { data: '登录失败' };
     }
   }
-
+  // 获取类型列表
   async getTypeInfo() {
     const resType = await this.app.mysql.select('type');
     this.ctx.body = { data: resType };
   }
+
   // 添加文章
   async addArticle() {
     const tmpArticle = this.ctx.request.body;
@@ -55,9 +56,9 @@ class MainController extends Controller {
     };
   }
 
-  // 获得文章列表
+  // 获得文章分页列表
   async getArticleList() {
-
+    const pageNum = this.ctx.query.pageNum - 1;
     const sql = 'SELECT article.id as id,' +
       'article.title as title,' +
       'article.introduce as introduce,' +
@@ -66,10 +67,16 @@ class MainController extends Controller {
       'article.status as status,' +
       'type.typeName as typeName ' +
       'FROM article LEFT JOIN type ON article.type_id = type.Id ' +
-      'ORDER BY article.status DESC ,article.addTime desc';
+      'ORDER BY article.status DESC ,article.addTime desc' +
+      // eslint-disable-next-line no-useless-concat
+      ' limit ' + pageNum * 10 + ',' + '10';
 
     const resList = await this.app.mysql.query(sql);
-    this.ctx.body = { list: resList };
+    const count = await this.app.mysql.query('select count(*) as count from article');
+    this.ctx.body = {
+      list: resList,
+      count: count[0].count,
+    };
 
   }
 
@@ -101,5 +108,4 @@ class MainController extends Controller {
 }
 
 
-module.exports = MainController
-  ;
+module.exports = MainController;
