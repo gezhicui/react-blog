@@ -30,6 +30,7 @@ class HomeController extends Controller {
 
   // 获取时间线列表
   async getArticleTimeList() {
+    const pageNum = this.ctx.query.pageNum - 1;
     const sql =
       'SELECT article.id as id,' +
       'article.title as title,' +
@@ -37,7 +38,9 @@ class HomeController extends Controller {
       'article.status as status ' +
       // eslint-disable-next-line no-useless-concat
       'FROM article LEFT JOIN type ON article.type_id = type.Id ' +
-      'ORDER BY status desc,article.addTime desc';
+      'ORDER BY status desc,article.addTime desc ' +
+      // eslint-disable-next-line no-useless-concat
+      'limit ' + pageNum * 10 + ',' + '10';
 
     const results = await this.app.mysql.query(sql);
 

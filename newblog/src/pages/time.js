@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
-import { Row, Col, Affix, Breadcrumb, Timeline, Spin, Tag } from 'antd'
+import { Row, Col, Affix, Breadcrumb, Timeline, Spin, Tag, message } from 'antd'
 import { ClockCircleOutlined } from '@ant-design/icons';
 
 import servicePath from '../config/apiUrl'
@@ -11,20 +11,51 @@ import 'animate.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 const Home = (props) => {
-  const [mylist, setMylist] = useState([])
+  const List = useRef([])
+  const Page = useRef(1)
+  const [mylist, setMylist] = useState(List.current)
+  const [state, setstate] = useState(1)
   const [loading, setLoading] = useState(false)
   useEffect(() => {
-    async function getProjectList() {
-      setLoading(true)
-      await axios({
-        url: servicePath.getArticleTimeList,
-      }).then((res) => {
-        setMylist(res.data.data)
-        setLoading(false)
-      })
-    }
     getProjectList()
+    document.documentElement.scrollTop = 0
+    document.addEventListener('scroll', onScrollHandle)
+    return outScrollHandle;
   }, [])
+  function getProjectList() {
+    setstate(0)
+    setLoading(true)
+    axios({
+      url: servicePath.getArticleTimeList,
+      params: {
+        pageNum: Page.current
+      }
+    }).then((res) => {
+      if (res.data.data.length === 0) {
+        message.warning('暂时没有更多了~');
+        setLoading(false)
+        return
+      }
+      let list = [...List.current, ...res.data.data]
+      List.current = list
+      Page.current = Page.current + 1
+      setMylist(List.current)
+      console.log(Page.current)
+      setLoading(false)
+      setstate(1)
+    })
+  }
+  function onScrollHandle() {
+    let scroll = document.documentElement.scrollTop + document.documentElement.clientHeight
+    let height = document.documentElement.scrollHeight - 1
+    if (scroll > height && state) {
+      console.log('到底部了')
+      getProjectList()
+    }
+  }
+  function outScrollHandle() {
+    document.removeEventListener('scroll', onScrollHandle)
+  }
   return (
     <div>
       <Spin spinning={loading}>

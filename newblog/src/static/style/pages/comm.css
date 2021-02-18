@@ -153,3 +153,6 @@ iframe {
   align-items: center;
   margin: 0.5rem 1rem;
 }
+.ant-timeline-item-content {
+  width: calc(50% - 20px) !important;
+}
