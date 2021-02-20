@@ -40,7 +40,6 @@ const Home = (props) => {
       List.current = list
       Page.current = Page.current + 1
       setMylist(List.current)
-      console.log(Page.current)
       setLoading(false)
       setstate(1)
     })
