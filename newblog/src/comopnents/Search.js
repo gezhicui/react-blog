@@ -12,70 +12,7 @@ const SearchContent = (props) => {
   const [searchlist, setSearchList] = useState()
   const [placement] = useState()
   const [mylist, setMyList] = useState()
-  const onClose = () => {
-    props.onClose()
-  }
-  const handleSearch = (e) => {
-    let value = e.target.value
-    let a = mylist.filter((item, index, arr) => {
-      let reg = '/' + value + '/i'
-      let title_boolean = item.title.search(eval(reg)) !== -1
-      let article_content_boolean =
-        item.content.search(eval(reg)) !== -1
-      // let length = document.querySelectorAll('.search_title').length - 1
-      // if (arr.length === index + 1) {
-      //   for (var j = 0; j <= length; j++) {
 
-      //     document.querySelectorAll('.search_content')[
-      //       j
-      //     ].innerHTML = document
-      //       .querySelectorAll('.search_content')
-      //     [j].innerHTML.replace(
-      //       /<b style="color:#1e90ff;">|<\/b>/gi,
-      //       ""
-      //     )
-      //       .replace(/#/g, "")
-      //       .replace(
-      //         eval(reg),
-      //         '<b style="color:#1e90ff;">' + value + '</b>'
-      //       )
-      //     document.querySelectorAll('.search_content')[
-      //       j
-      //     ].innerHTML = document
-      //       .querySelectorAll('.search_content')
-      //     [j].innerHTML.substring(
-      //       document
-      //         .querySelectorAll('.search_content')
-      //       [j].innerHTML.search(
-      //         '<b style="color:#1e90ff;">'
-      //       ) - 3
-      //     )
-      //   }
-      // }
-      // if (arr.length === index + 1) {
-      //   for (var i = 0; i <= length; i++) {
-      //     document.querySelectorAll('.search_title')[
-      //       i
-      //     ].innerHTML = document
-      //       .querySelectorAll('.search_title')
-      //     [i].innerHTML.replace(
-      //       /<b style="color:#1e90ff;">/gi,
-      //       ''
-      //     )
-      //       .replace(/<\/b>/gi, '')
-      //       .replace(
-      //         eval(reg),
-      //         '<b style="color:#1e90ff;">' + value + '</b>'
-      //       )
-      //   }
-      // }
-
-      return title_boolean || article_content_boolean
-    })
-
-    setSearchList(a)
-
-  }
   useEffect(() => {
     async function getProjectList() {
       await axios({
@@ -87,6 +24,29 @@ const SearchContent = (props) => {
     }
     getProjectList()
   }, [])
+
+  const onClose = () => {
+    props.onClose()
+  }
+  const handleSearch = (e) => {
+    let value = e.target.value
+    let a = mylist.filter((item, index, arr) => {
+      let reg = '/' + value + '/i'
+      let title_boolean = item.title.search(eval(reg)) !== -1
+      let article_content_boolean =
+        item.content.search(eval(reg)) !== -1
+      return title_boolean || article_content_boolean
+    })
+
+    setSearchList(a)
+  }
+
+  const enterDetail = () => {
+    props.enterDetail()
+  }
+  const searchValue = (value) => {
+    console.log(value)
+  }
   return (
     <div>
       <Drawer
@@ -94,7 +54,7 @@ const SearchContent = (props) => {
           <div>
             <Search
               placeholder="请输入查找内容"
-              onSearch={(value) => console.log(value)}
+              onSearch={searchValue}
               onChange={handleSearch}
               className="search_input"
             />
@@ -105,7 +65,6 @@ const SearchContent = (props) => {
         onClose={onClose}
         visible={props.value}
         key={placement}
-
         width="650px"
       >
         <List
@@ -118,12 +77,14 @@ const SearchContent = (props) => {
                   to={{
                     pathname: '/detail/' + item.id,
                     query: { id: item.id },
-                  }} >{item.title}</Link>}
+                  }}
+                  onClick={enterDetail}
+                >{item.title}</Link>}
                 description={item.content}
               />
             </List.Item>
           )}
-        />,
+        />
       </Drawer>
     </div>
   )

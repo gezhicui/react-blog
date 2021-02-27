@@ -32,12 +32,16 @@ const Header = (props) => {
   const handleOnopen = () => {
     setSearchVisible(true)
   }
+  const enterDetail = () => {
+    setSearchVisible(false)
+    setVisible(false)
+  }
   return (
     <div className="header">
       <Row >
         <Col xs={18} sm={18} md={10} lg={10} xl={10} className="header_main">
           <span className="header-logo">yang</span>
-          <span className="header-txt">杨雨翔的博客小站</span>
+          <span className="header-txt">杨雨翔的小站</span>
         </Col>
 
         <Col className="memu-div" xs={0} sm={0} md={10} lg={10} xl={10} offset={3}>
@@ -87,8 +91,7 @@ const Header = (props) => {
           </Menu.Item>
         </Menu>
       </Drawer>
-      <SearchContent value={searchVisible} onClose={handleOnClose} />
-
+      <SearchContent value={searchVisible} onClose={handleOnClose} enterDetail={enterDetail} />
     </div>
   )
 }

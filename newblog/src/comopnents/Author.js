@@ -6,7 +6,7 @@ const Author = () => {
 
   return (
     <div className="author-div comm-box">
-      <div> <Avatar size={100} src="https://gitee.com/yang_yu_xiang/BlogImages/raw/master/img/author.jpg" /></div>
+      <div> <Avatar size={100} src="https://gitee.com/xiang0515/BlogImages/raw/master/img/author.jpg" /></div>
       <div className="author-name">
         杨雨翔
       </div>
@@ -15,7 +15,7 @@ const Author = () => {
         <Divider>社交账号</Divider>
         <Tooltip
           placement="top"
-          title="https://gitee.com/yang_yu_xiang"
+          title="https://gitee.com/xiang0515"
         >
           <Avatar size={28} icon={<GithubOutlined />} className="account" />
         </Tooltip>
@@ -32,7 +32,7 @@ const Author = () => {
       <ul className='friend-url'>
         <li>
           <a
-            href="http://yang_yu_xiang.gitee.io/myblog"
+            href="http://xiang0515.gitee.io/myblog"
             target="_blank"
             rel="noopener noreferer"
           >Yang's Blog(旧)</a>

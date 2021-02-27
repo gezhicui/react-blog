@@ -9,7 +9,6 @@ import hljs from "highlight.js";
 import '../static/style/pages/home.css'
 import servicePath from '../config/apiUrl'
 import Author from '../comopnents/Author'
-import SearchContent from '../comopnents/Search'
 import 'animate.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 const Home = (props) => {
@@ -17,7 +16,6 @@ const Home = (props) => {
   const [loading, setLoading] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [total, setTotel] = useState(0)
-  const [visible, setVisible] = useState() // 抽屉加载
   const renderer = new marked.Renderer();
 
   marked.setOptions({
@@ -50,9 +48,6 @@ const Home = (props) => {
     }
     getPageData()
   }, [currentPage])
-  const handleOnClose = () => {
-    setVisible(false)
-  }
   const readMore = (item) => {
     props.history.push('/detail/' + item.id)
   }
@@ -65,6 +60,7 @@ const Home = (props) => {
       {/* 主体区域 */}
       <Spin spinning={loading}>
         <Row type="flex" justify="center" className='comm-row'>
+
           <Col className="comm-left" xs={0} sm={0} md={7} lg={5} xl={4}>
             <ReactCSSTransitionGroup
               transitionEnter={true}
@@ -83,7 +79,6 @@ const Home = (props) => {
               </div>
             </ReactCSSTransitionGroup>
           </Col>
-
 
           <Col xs={24} sm={24} md={16} lg={18} xl={14}  >
             <ReactCSSTransitionGroup
@@ -137,11 +132,9 @@ const Home = (props) => {
                     total={total} />
                 </div>
               </div>
-
             </ReactCSSTransitionGroup>
           </Col>
         </Row>
-        <SearchContent value={visible} onClose={handleOnClose} />
       </Spin>
     </div>
   )
