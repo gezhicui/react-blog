@@ -27,6 +27,19 @@ class HomeController extends Controller {
 
     this.ctx.body = { data: results };
   }
+  async getArticleListByValue() {
+    const value = this.ctx.query.value;
+    const sql =
+      'SELECT article.id as id,' +
+      'article.title as title,' +
+      'article.article_content as content ' +
+      'FROM article ' +
+      'WHERE CONCAT(article_content,title,introduce) ' +
+      `LIKE '%${value}%' ` +
+      'ORDER BY status desc,article.addTime desc';
+    const results = await this.app.mysql.query(sql);
+    this.ctx.body = { data: results };
+  }
 
   // 获取时间线列表
   async getArticleTimeList() {

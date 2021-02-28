@@ -4,6 +4,8 @@ module.exports = app => {
   router.get('/default/index', controller.default.home.index);
   // 获取文章列表
   router.get('/default/getArticleList', controller.default.home.getArticleList);
+  // 获取关键字搜索文章列表
+  router.get('/default/getArticleListByValue', controller.default.home.getArticleListByValue);
   // 获取分页文章列表
   router.get('/default/getPagingArticleList', controller.default.home.getPagingArticleList);
   // 获取时间线列表

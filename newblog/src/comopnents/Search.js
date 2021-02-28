@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { List, Input, Drawer } from 'antd'
+
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
@@ -10,35 +11,11 @@ const { Search } = Input
 
 const SearchContent = (props) => {
   const [searchlist, setSearchList] = useState()
+  const [loading, setLoading] = useState(false)
   const [placement] = useState()
-  const [mylist, setMyList] = useState()
-
-  useEffect(() => {
-    async function getProjectList() {
-      await axios({
-        url: servicePath.getArticleList,
-      }).then((res) => {
-        console.log(res)
-        setMyList(res.data.data)
-      })
-    }
-    getProjectList()
-  }, [])
 
   const onClose = () => {
     props.onClose()
-  }
-  const handleSearch = (e) => {
-    let value = e.target.value
-    let a = mylist.filter((item, index, arr) => {
-      let reg = '/' + value + '/i'
-      let title_boolean = item.title.search(eval(reg)) !== -1
-      let article_content_boolean =
-        item.content.search(eval(reg)) !== -1
-      return title_boolean || article_content_boolean
-    })
-
-    setSearchList(a)
   }
 
   const enterDetail = () => {
@@ -46,6 +23,20 @@ const SearchContent = (props) => {
   }
   const searchValue = (value) => {
     console.log(value)
+    setLoading(true)
+    axios({
+      url: servicePath.getArticleListByValue,
+      params: {
+        value: value
+      }
+    }).then((res) => {
+      console.log(res)
+      setLoading(false)
+      setSearchList(res.data.data)
+    }).catch(err => {
+      console.log(err)
+      setLoading(false)
+    })
   }
   return (
     <div>
@@ -55,7 +46,7 @@ const SearchContent = (props) => {
             <Search
               placeholder="请输入查找内容"
               onSearch={searchValue}
-              onChange={handleSearch}
+              // onChange={handleSearch}
               className="search_input"
             />
           </div>
@@ -67,9 +58,11 @@ const SearchContent = (props) => {
         key={placement}
         width="650px"
       >
+
         <List
           itemLayout="horizontal"
           dataSource={searchlist}
+          loading={loading}
           renderItem={item => (
             <List.Item>
               <List.Item.Meta
