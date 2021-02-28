@@ -43,7 +43,6 @@ const Detail = (props) => {
       data: {
         id: articleContent.id
       },
-      // header: { 'Access-Control-Allow-Origin': '*' },
     }).then(res => {
       console.log(res)
     })
