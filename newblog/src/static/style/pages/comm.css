@@ -37,7 +37,8 @@ body {
 
 .list-context {
   color: #777;
-  padding: 0.7rem;
+  font-size: 1rem;
+  padding: 0.7rem 2rem;
   overflow: hidden;
   margin-bottom: 15px;
 }
@@ -66,7 +67,10 @@ body {
   padding: 0.3rem 0.6rem !important;
   margin: 0.5rem !important;
 }
-
+/* -------------hightlight配置 */
+p {
+  text-indent: 2rem;
+}
 pre {
   display: block;
   background-color: #f3f3f3;
@@ -103,6 +107,7 @@ code {
   padding-right: 5px;
   color: #ff502c;
   margin: 0px 3px;
+  text-indent: 0;
 }
 
 .title-anchor {
@@ -118,6 +123,16 @@ code {
   white-space: nowrap;
 }
 
+blockquote {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border-left: 0.3rem solid #d3e1ee !important;
+  border: 1px solid #eee;
+  box-shadow: 0.4rem 0.4rem 0.7rem rgba(238, 238, 238, 0.938);
+}
+blockquote > p:last-child {
+  margin-bottom: 0 !important;
+}
 .active {
   color: rgb(30, 144, 255) !important;
 }

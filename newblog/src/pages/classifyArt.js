@@ -66,7 +66,7 @@ const Home = (props) => {
           <Col className="comm-right" xs={24} sm={24} md={16} lg={18} xl={14}  >
             <Breadcrumb className="bread-crumb">
               <Breadcrumb.Item><a href="/">首页</a></Breadcrumb.Item>
-              <Breadcrumb.Item><a href="/classify">分类</a></Breadcrumb.Item>
+              <Breadcrumb.Item><Link to="/classify">分类</Link></Breadcrumb.Item>
               <Breadcrumb.Item>{mylist[0] ? mylist[0].typeName : ''}</Breadcrumb.Item>
             </Breadcrumb>
             <List

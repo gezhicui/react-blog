@@ -22,7 +22,6 @@ const SearchContent = (props) => {
     props.enterDetail()
   }
   const searchValue = (value) => {
-    console.log(value)
     setLoading(true)
     axios({
       url: servicePath.getArticleListByValue,
@@ -30,11 +29,9 @@ const SearchContent = (props) => {
         value: value
       }
     }).then((res) => {
-      console.log(res)
       setLoading(false)
       setSearchList(res.data.data)
     }).catch(err => {
-      console.log(err)
       setLoading(false)
     })
   }

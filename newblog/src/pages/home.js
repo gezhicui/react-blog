@@ -41,6 +41,7 @@ const Home = (props) => {
           pageNum: currentPage
         }
       }).then((res) => {
+        console.log(res.data.data)
         setMylist(res.data.data)
         setTotel(res.data.count)
         setLoading(false)

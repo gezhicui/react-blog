@@ -65,7 +65,7 @@ const Home = (props) => {
 
                 <Breadcrumb className="bread-crumb">
                   <Breadcrumb.Item><a href="/">首页</a></Breadcrumb.Item>
-                  <Breadcrumb.Item>分类</Breadcrumb.Item>
+                  <Breadcrumb.Item><Link to="/classify">分类</Link></Breadcrumb.Item>
                 </Breadcrumb>
                 <div className="card">
                   {
