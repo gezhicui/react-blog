@@ -13,44 +13,48 @@
   overflow: auto;
 }
 
-.show-html h1 {
+h1 {
   font-size: 30px;
 }
 
-.show-html h2 {
-  font-size: 28px;
+h2 {
+  font-size: 25px;
   border-bottom: 1px solid #cbcbcb;
   display: block;
   padding: 0.5rem !important;
   overflow-y: auto;
   font-weight: 300;
-  font-family: Menlo, monospace;
   border-radius: 0.3rem;
 }
 
-.show-html h3 {
+h3 {
   font-size: 24px;
 }
+.introduce-html {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
 
+  background-color: #f0f0f0;
+}
+
+/*--------------- 富文本编辑器样式 */
 pre {
   display: block;
-  background-color: #f3f3f3;
+  background-color: #283646;
   padding: 0.5rem !important;
   overflow-y: auto;
   font-weight: 300;
   font-family: Menlo, monospace;
   border-radius: 0.3rem;
-}
-pre {
-  background-color: #283646 !important;
 }
 pre > code {
   border: 0px !important;
   background-color: #283646 !important;
   color: #fff;
 }
-
-.show-html img {
+img {
   display: block;
   margin: 0 auto 25px;
   max-width: 100%;
@@ -80,36 +84,7 @@ blockquote {
 blockquote > p:last-child {
   margin-bottom: 0 !important;
 }
-
-.introduce-html {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 16px;
-
-  background-color: #f0f0f0;
-}
-
-.introduce-html h1 {
-  font-size: 30px;
-}
-
-.introduce-html h2 {
-  font-size: 28px;
-  border-bottom: 1px solid #cbcbcb;
-}
-
-.introduce-html h3 {
-  font-size: 24px;
-}
-
-.introduce-html pre {
-  display: block;
-  background-color: #f0f0f0;
-  padding: 5px;
-  border-radius: 5px;
-}
-
+/* -------------------- */
 .date-select {
   margin-top: 10px;
 }
