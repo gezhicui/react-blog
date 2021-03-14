@@ -17,6 +17,7 @@ function ArticleList(props) {
   const [list, setList] = useState([])
   useEffect(() => {
     getList()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage])
 
   //得到文章列表

@@ -20,36 +20,65 @@
 .show-html h2 {
   font-size: 28px;
   border-bottom: 1px solid #cbcbcb;
+  display: block;
+  padding: 0.5rem !important;
+  overflow-y: auto;
+  font-weight: 300;
+  font-family: Menlo, monospace;
+  border-radius: 0.3rem;
 }
 
 .show-html h3 {
   font-size: 24px;
 }
 
-.show-html pre {
+pre {
   display: block;
-  background-color: #f0f0f0;
-  padding: 5px;
-  border-radius: 5px;
+  background-color: #f3f3f3;
+  padding: 0.5rem !important;
+  overflow-y: auto;
+  font-weight: 300;
+  font-family: Menlo, monospace;
+  border-radius: 0.3rem;
+}
+pre {
+  background-color: #283646 !important;
+}
+pre > code {
+  border: 0px !important;
+  background-color: #283646 !important;
+  color: #fff;
 }
 
-.show-html pre > code {
-  color: #000;
-  background-color: #f0f0f0;
+.show-html img {
+  display: block;
+  margin: 0 auto 25px;
+  max-width: 100%;
+  box-shadow: 0 0 10px #adadad;
+  border-radius: 0.5rem;
 }
 
-.show-html code {
+code {
+  display: inline-block;
   background-color: #fff5f5;
-  padding: 5px 10px;
+  border: 1px solid #fae0e0;
   border-radius: 5px;
-  margin: 0px 3px;
+  font-size: 13px;
+  padding-left: 5px;
+  padding-right: 5px;
   color: #ff502c;
+  margin: 0px 3px;
+  text-indent: 0;
 }
-
-.show-html blockquote {
-  border-left: 4px solid #cbcbcb;
-  padding: 10px 10px 10px 30px;
-  background-color: #f8f8f8;
+blockquote {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border-left: 0.3rem solid #d3e1ee !important;
+  border: 1px solid #eee;
+  box-shadow: 0.4rem 0.4rem 0.7rem rgba(238, 238, 238, 0.938);
+}
+blockquote > p:last-child {
+  margin-bottom: 0 !important;
 }
 
 .introduce-html {
@@ -79,25 +108,6 @@
   background-color: #f0f0f0;
   padding: 5px;
   border-radius: 5px;
-}
-
-.introduce-html pre > code {
-  color: #000;
-  background-color: #f0f0f0;
-}
-
-.introduce-html code {
-  background-color: #fff5f5;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin: 0px 3px;
-  color: #ff502c;
-}
-
-.introduce-html blockquote {
-  border-left: 4px solid #cbcbcb;
-  padding: 10px 10px 10px 30px;
-  background-color: #f8f8f8;
 }
 
 .date-select {

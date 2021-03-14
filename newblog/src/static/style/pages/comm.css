@@ -73,22 +73,20 @@ p {
 }
 pre {
   display: block;
-  background-color: #f3f3f3;
+  background-color: #283646;
   padding: 0.5rem !important;
   overflow-y: auto;
   font-weight: 300;
   font-family: Menlo, monospace;
   border-radius: 0.3rem;
 }
+
 .list-context img {
   display: block;
   margin: 0 auto 25px;
   max-width: 100%;
   box-shadow: 0 0 10px #adadad;
   border-radius: 0.5rem;
-}
-pre {
-  background-color: #283646 !important;
 }
 
 pre > code {

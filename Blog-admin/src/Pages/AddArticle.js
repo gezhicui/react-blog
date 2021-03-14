@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import marked from 'marked'
 import '../Static/css/AddArticle.css'
+import hljs from "highlight.js";
+import 'highlight.js/styles/monokai-sublime.css';
 import { Row, Col, Input, Select, Button, DatePicker, message, Drawer, Switch } from 'antd'
 import axios from 'axios'
 import servicePath from '../config/apiUrl'
@@ -45,6 +47,9 @@ export default function AddArticle(props) {
     breaks: false,
     smartLists: true,
     smartypants: false,
+    highlight: function (code) {
+      return hljs.highlightAuto(code).value;
+    }
   });
 
   const changeContent = e => {
