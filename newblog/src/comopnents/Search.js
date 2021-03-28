@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { List, Input, Drawer } from 'antd'
+import { List, Input, Drawer, Divider } from 'antd'
 
 import { Link } from 'react-router-dom'
 import axios from 'axios'
@@ -63,13 +63,17 @@ const SearchContent = (props) => {
           renderItem={item => (
             <List.Item>
               <List.Item.Meta
-                title={<Link
-                  to={{
-                    pathname: '/detail/' + item.id,
-                    query: { id: item.id },
-                  }}
-                  onClick={enterDetail}
-                >{item.title}</Link>}
+                title={
+                  <Divider orientation="left" >
+                    <Link
+                      to={{
+                        pathname: '/detail/' + item.id,
+                        query: { id: item.id },
+                      }}
+                      onClick={enterDetail}
+                    >{item.title}</Link>
+                  </Divider>
+                }
                 description={item.content}
               />
             </List.Item>

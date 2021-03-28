@@ -96,7 +96,7 @@ const Home = (props) => {
                 responsive={true}
                 onChange={paginationChange}
                 showSizeChanger={false}
-                pageSize={5}
+                pageSize={10}
                 total={total} />
             </div>
           </Col>

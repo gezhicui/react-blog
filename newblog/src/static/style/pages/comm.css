@@ -131,13 +131,6 @@ blockquote {
 .hljs-comment {
   color: #6a9955 !important;
 }
-.hljs-keyword {
-  color: #569cd6 !important;
-}
-.hljs-title {
-  color: #dccd79 !important;
-}
-
 blockquote > p:last-child {
   margin-bottom: 0 !important;
 }
