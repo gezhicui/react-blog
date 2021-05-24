@@ -18,6 +18,6 @@ module.exports = app => {
   router.get('/admin/delArticle/:id', controller.admin.main.delArticle);
   // 根据id查询文章
   router.get('/admin/getArticleById/:id', controller.admin.main.getArticleById);
-
-
+  // 上传图片
+  router.post('/admin/uploadImg', controller.admin.main.uploadImg);
 };

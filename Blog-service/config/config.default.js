@@ -52,7 +52,13 @@ module.exports = appInfo => {
     credentials: true, // 允许Cookie可以跨域
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
   };
+  // 图片上传路径
+  config.uploadDir = 'app/public/upload';
 
+  // token加密条件
+  config.jwt = {
+    secret: '165165',
+  };
 
   return {
     ...config,
