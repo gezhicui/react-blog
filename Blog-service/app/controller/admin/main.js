@@ -4,10 +4,12 @@ const Controller = require('egg').Controller;
 const fs = require('fs');
 const pump = require('pump');
 class MainController extends Controller {
-  async index() {
-    this.ctx.body = 'hi hihi';
+  // 测试
+  async test() {
+    const { ctx } = this;
+    ctx.body = { code: 201, msg: '验证成功', data: ctx.state.user };
+    console.log('\n\n user +++', ctx.state.user);
   }
-
   // 判断用户名密码是否正确
   async checkLogin() {
     const userName = this.ctx.request.body.userName;
@@ -17,10 +19,12 @@ class MainController extends Controller {
 
     const res = await this.app.mysql.query(sql);
     if (res.length > 0) {
-      // 登录成功,进行session缓存
-      const openId = new Date().getTime();
-      this.ctx.session.openId = { openId };
-      this.ctx.body = { data: '登录成功', openId };
+      // 登录成功,进行token生成
+      const token = this.app.jwt.sign({
+        userName: this.ctx.request.body.userName,
+        password: this.ctx.request.body.password,
+      }, this.app.config.jwt.secret);
+      this.ctx.body = { data: '登录成功', token };
 
     } else {
       this.ctx.body = { data: '登录失败' };

@@ -57,9 +57,11 @@ module.exports = appInfo => {
 
   // token加密条件
   config.jwt = {
-    secret: '165165',
+    secret: '123456',
+    enable: true, // default is false
+    match: '/jwt', // optional
+    expiresIn: '24h',
   };
-
   return {
     ...config,
     ...userConfig,

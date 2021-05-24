@@ -1,9 +1,10 @@
 'use strict';
 module.exports = app => {
-  const { router, controller } = app;
+  const { router, controller, middleware } = app;
+  const jwt = middleware.jwt(app.config.jwt);
   // 声明并引入中间件。
-  // const adminauth =  app.middleware.adminauth()
-  router.get('/admin/index', controller.admin.main.index);
+  // router.get('/', controller.admin.main.index);
+  router.post('/admin/test', jwt, controller.admin.main.test);
   // 登录
   router.post('/admin/checkLogin', controller.admin.main.checkLogin);
   // 获取文章分类
