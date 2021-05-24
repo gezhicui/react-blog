@@ -4,8 +4,7 @@ import Main from './Pages/Main';
 
 
 ReactDOM.render(
- 
-    <Main />,
+  <Main />,
   document.getElementById('root')
 );
 

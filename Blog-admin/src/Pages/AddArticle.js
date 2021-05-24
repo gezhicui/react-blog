@@ -23,10 +23,10 @@ export default function AddArticle(props) {
   const [selectedType, setSelectType] = useState('选择类别') //选择的文章类别
   const [status, setStatus] = useState(0) //文章是否置顶
   const [visible, setVisible] = useState(false) //抽屉显示
-  useEffect(() => {
-    console.log(showDate)
-    console.log((new Date(showDate).getTime()).toString().length)
-  }, [showDate])
+  // useEffect(() => {
+  //   console.log(showDate)
+  //   console.log((new Date(showDate).getTime()).toString().length)
+  // }, [showDate])
   useEffect(() => {
     getTypeInfo()
     // 获取文章id
