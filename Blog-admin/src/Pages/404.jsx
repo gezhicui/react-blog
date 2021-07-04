@@ -1,4 +1,6 @@
 import ErrorImg from '../Static/image/404.png'
+import React from 'react'
+import '../Static/css/404.css'
 
 export default function ErrorPage(props) {
   return (

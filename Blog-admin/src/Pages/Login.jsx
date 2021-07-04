@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Button, Card, Input, Spin, message } from 'antd';
 import 'antd/dist/antd.css';
 import '../Static/css/Login.css';
+import Footrer from './components/Footer'
 import { UserOutlined, EditOutlined } from '@ant-design/icons';
 import axios from 'axios'
 import servicePath from '../config/apiUrl'
@@ -72,6 +73,7 @@ export default function Login(props) {
           <Button type="primary" size="large" block onClick={checkLogin} > Login in </Button>
         </Card>
       </Spin>
+      <Footrer></Footrer>
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import Login from './Login'
 import AdminIndex from './AdminIndex'
 import ErrorPage from './404'

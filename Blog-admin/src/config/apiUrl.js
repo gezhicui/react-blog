@@ -1,5 +1,5 @@
-// let ipUrl = 'http://159.75.29.199:7001/admin/'   //127部分可以改成以后上线的域名
-let ipUrl = 'http://127.0.0.1:7001/admin/'
+let ipUrl = 'http://159.75.29.199:7001/admin/'   //127部分可以改成以后上线的域名
+// let ipUrl = 'http://127.0.0.1:7001/admin/'
 let servicePath = {
   checkLogin: ipUrl + 'checkLogin',    // 检查用户名和密码
   getTypeInfo: ipUrl + 'getTypeInfo',  // 获得文章类别信息

@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import '../Static/css/AdminIndex.css';
 import { UserOutlined } from '@ant-design/icons';
-import AddArticle from './AddArticle';
 import { Route } from "react-router-dom";
 import ArticleList from './ArticleList'
+import AddArticle from './AddArticle';
 
 
 
