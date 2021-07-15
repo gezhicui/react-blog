@@ -1,22 +1,18 @@
 import React from 'react'
-import { BrowserRouter as Router, Switch } from 'react-router-dom'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import Login from './Login'
 import AdminIndex from './AdminIndex'
 import ErrorPage from './404'
-import FrontendAuth from '../config/frontendAuth'
+import PrivateRoute from '../config/privateRoute'
 
-const routerObj = [
-  { path: '/', name: 'login', component: Login },
-  { path: '/index', name: 'index', component: AdminIndex, auth: true },
-  { path: '/404', name: '404', component: ErrorPage }
-]
 export default function Main() {
   return (
     <Router>
-      {/* <Route path='/' exact component={Login} />
-      <Route path='/index' component={AdminIndex} /> */}
       <Switch>
-        <FrontendAuth routerConfig={routerObj} />
+        <Route path='/' exact component={Login} />
+        <PrivateRoute path='/index' component={AdminIndex} />
+        {/* <Route path='/index' component={AdminIndex} /> */}
+        <Route component={ErrorPage} />
       </Switch>
     </Router>
   )

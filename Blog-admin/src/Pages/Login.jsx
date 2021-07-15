@@ -41,7 +41,10 @@ export default function Login(props) {
       res => {
         setIsLoading(false)
         if (res.data.data === '登录成功') {
-          sessionStorage.setItem('token', res.data.token)
+          if (res.data.token) {
+            sessionStorage.setItem('token', res.data.token)
+          }
+          sessionStorage.setItem('token', '23131231')
           props.history.push('/index')
         } else {
           message.error('用户名密码错误')
