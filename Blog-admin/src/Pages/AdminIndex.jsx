@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Layout, Menu, Breadcrumb, Button } from 'antd';
-import '../Static/css/AdminIndex.less';
+import '../Static/css/AdminIndex.scss';
 import { SettingOutlined, PieChartOutlined, FolderOpenOutlined, PoweroffOutlined } from '@ant-design/icons';
 import { Route } from "react-router-dom";
 import ArticleList from './ArticleList'
@@ -9,7 +9,7 @@ import PhotoBucket from './PhotoBucket'
 
 
 
-const { Content, Footer, Sider } = Layout;
+const { Content, Sider } = Layout;
 const { SubMenu } = Menu;
 
 
@@ -61,7 +61,7 @@ function AdminIndex(props) {
         </Menu>
       </Sider>
       <Layout>
-        <Content className="admin-main-content">
+        <Content className="admin-main">
           <div className="admin-breadcrumb">
             <Breadcrumb style={{ margin: '8px 0' }}>
               <Breadcrumb.Item>后台管理</Breadcrumb.Item>
@@ -73,7 +73,7 @@ function AdminIndex(props) {
               shape="round"
             >注销</Button>
           </div>
-          <div style={{ padding: 24, background: '#fff', minHeight: 360 }}>
+          <div className="admin-main-content">
             <div>
               <Route path="/index/" exact component={AddArticle} />
               <Route path="/index/add" exact component={AddArticle} />
@@ -83,7 +83,7 @@ function AdminIndex(props) {
             </div>
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>yangyuxiang.ltd</Footer>
+        {/* <Footer style={{ textAlign: 'center' }}>yangyuxiang.ltd</Footer> */}
       </Layout>
     </Layout>
   )

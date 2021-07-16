@@ -1,0 +1,19 @@
+.logo {
+  height: 32px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px;
+}
+.admin-main {
+  padding: 0 16px;
+  .admin-breadcrumb {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .admin-main-content {
+    min-height: calc(100% - 60px);
+    padding: 15px;
+    background-color: #fff;
+  }
+}

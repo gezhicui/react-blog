@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios'
 import servicePath from '../config/apiUrl'
-import { List, Row, Col, Modal, message, Button, Pagination, Spin } from 'antd';
+import { List, Row, Col, Modal, message, Button, Spin } from 'antd';
 import '../Static/css/ArticleList.css'
 
 
@@ -71,9 +71,17 @@ function ArticleList(props) {
     <div>
       <Spin spinning={loading}>
         <List
+          pagination={{
+            current: currentPage,
+            responsive: true,
+            onChange: paginationChange,
+            showSizeChanger: false,
+            pageSize: 10,
+            total: total,
+          }}
           //列表头
           header={
-            <Row className="list-div">
+            <Row className="list-item">
               <Col span={8}>
                 <b>标题</b>
               </Col>
@@ -99,7 +107,7 @@ function ArticleList(props) {
           dataSource={list}   //数据源
           renderItem={item => (
             <List.Item>
-              <Row className="list-div">
+              <Row className="list-item">
                 <Col span={8}>
                   {item.title}
                 </Col>
@@ -126,7 +134,7 @@ function ArticleList(props) {
             </List.Item>
           )}
         />
-        <div className='pagination'>
+        {/* <div className='pagination'>
           <Pagination
             current={currentPage}
             responsive={true}
@@ -134,7 +142,7 @@ function ArticleList(props) {
             showSizeChanger={false}
             pageSize={10}
             total={total} />
-        </div>
+        </div> */}
       </Spin>
     </div>
 
