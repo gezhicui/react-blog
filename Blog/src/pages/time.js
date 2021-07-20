@@ -13,8 +13,8 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 const Home = (props) => {
   const List = useRef([])
   const Page = useRef(1)
+  const State = useRef(1)
   const [mylist, setMylist] = useState(List.current)
-  const [state, setstate] = useState(1)
   const [loading, setLoading] = useState(false)
   useEffect(() => {
     getProjectList()
@@ -23,8 +23,8 @@ const Home = (props) => {
     return outScrollHandle;
   }, [])
   function getProjectList() {
-    setstate(0)
     setLoading(true)
+    State.current = 0
     axios({
       url: servicePath.getArticleTimeList,
       params: {
@@ -41,13 +41,13 @@ const Home = (props) => {
       Page.current = Page.current + 1
       setMylist(List.current)
       setLoading(false)
-      setstate(1)
+      State.current = 1
     })
   }
   function onScrollHandle() {
     let scroll = document.documentElement.scrollTop + document.documentElement.clientHeight
     let height = document.documentElement.scrollHeight - 1
-    if (scroll > height && state) {
+    if (scroll > height && State.current) {
       console.log('到底部了')
       getProjectList()
     }

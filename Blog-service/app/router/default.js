@@ -20,5 +20,4 @@ module.exports = app => {
   router.get('/default/getPagingTypeIdArticle/:id', controller.default.home.getPagingTypeIdArticle);
   // 增加文章浏览量
   router.post('/default/addArticleViewCount', controller.default.home.addArticleViewCount);
-
 };
