@@ -1,7 +1,7 @@
 'use strict';
 module.exports = app => {
   const { router, controller } = app;
-  router.get('/default/index', controller.default.home.index);
+  router.get('/', controller.default.home.index);
   // 获取文章列表
   router.get('/default/getArticleList', controller.default.home.getArticleList);
   // 获取关键字搜索文章列表
